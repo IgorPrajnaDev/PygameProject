@@ -9,20 +9,26 @@ pygame.init()
 #resolução da tela
 info = pygame.display.Info()
 screen_width, screen_height = info.current_w, info.current_h
+#fornece as duas variáveis a resolução do pc
 screen = pygame.display.set_mode((screen_width, screen_height), pygame.FULLSCREEN)
 
 
 #imagem de fundo
 background_image = pygame.image.load(r'C:\Users\pedro\Desktop\Projeto Final IP\Imagens\pixel_wallpaper_by_simonesheri1_df0esjo-fullview.jpg')
 background_image = pygame.transform.scale(background_image,(screen_width, screen_height))
+#redimensiona a imagem de fundo pra a resolução da tela
 
 #texto
 font = pygame.font.SysFont("JetBrains-Mono", 30)
 
+#x e y seriam as coordenadas do cursor?
 def draw_button(text, x, y, width, height, inactive_color, action=None):
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
+
+    #pygame.SRCALPHA: Indica que a superfície deve ter um canal alfa para suportar transparência.
     button_surface = pygame.Surface((width, height), pygame.SRCALPHA)
+    
     # Verifica se o mouse está sobre o botão
     if (x + width > mouse[0] > x and y + height > mouse[1] > y):
         # Desenhar um retângulo com a cor ativa
